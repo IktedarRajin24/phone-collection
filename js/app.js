@@ -7,9 +7,18 @@ const loadPhones = async (searchItem, dataLimit) =>{
 
 const displayPhoneDetails = (phone) =>{
     console.log(phone);
+
+    document.getElementById('phone-details').classList.remove('hidden');
     const phoneDetails = document.getElementById('phone-details-container');
     phoneDetails.innerHTML=`
-        <p>Brand: ${phone.brand}</p>
+        <p><b>Brand:</b> ${phone.brand}</p>
+        <p><b>Name:</b> ${phone.name}</p>
+        <ul> <b>Main Features:</b>
+            <li><b>Storage: </b>${phone.mainFeatures.storage? phone.mainFeatures.storage : "No Storage Information Found." }</li>
+            <li><b>Display: </b>${phone.mainFeatures.displaySize? phone.mainFeatures.displaySize: "No Display Information Found."}</li>
+            <li><b>Chip: </b>${phone.mainFeatures.chipSet? phone.mainFeatures.chipSet : "No Chipset Information Found."}</li>
+            <li><b>Memory: </b>${phone.mainFeatures.memory? phone.mainFeatures.memory : "No Memory Information Found."}</li>
+        </ul>
     `
 }
 
@@ -93,12 +102,12 @@ document.getElementById('show-all-btn').addEventListener('click', ()=>{
     searchField();
 })
 
-document.getElementById('show-details-btn').addEventListener('click', ()=>{
-    document.getElementById('phone-details').classList.remove('hidden');
-});
+// document.getElementById('show-details-btn').addEventListener('click', ()=>{
+//     document.getElementById('phone-details').classList.remove('hidden');
+// });
 
 document.getElementById('close-details-btn').addEventListener('click', ()=>{
     document.getElementById('phone-details').classList.add('hidden');
 });
 
-loadPhones('apple')
+//loadPhones('apple')
