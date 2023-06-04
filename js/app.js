@@ -8,10 +8,17 @@ const loadPhones = async (searchItem) =>{
 const displayPhones = phones =>{
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.innerText = '';
+    const showAll = document.getElementById('show-all-btn');
+    if(phones.length >10){
+        showAll.classList.remove('hidden');
+    }
+    else{
+        showAll.classList.add('hidden');
+    }
     const errorMessage = document.getElementById('err-msg');
-    const phoneArray = phones.slice(0,20);
+    const phoneArray = phones.slice(0,10);
     if(phoneArray.length === 0){
-        errorMessage.classList.remove('hidden')
+        errorMessage.classList.remove('hidden');
     }else{
         errorMessage.classList.add('hidden');
     }
@@ -21,7 +28,7 @@ const displayPhones = phones =>{
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add("text-center");
         phoneDiv.classList.add("h-full");
-        phoneDiv.classList.add("rounded-lg")
+        phoneDiv.classList.add("rounded-lg");
         phoneDiv.innerHTML =
         `<div class="bg-white w-full h-full p-4 rounded-lg">
             <img class="w-1/2 mx-auto mb-2" src=${phone.image} alt=${phone.name}>
@@ -33,9 +40,21 @@ const displayPhones = phones =>{
         </div>`
         phoneContainer.appendChild(phoneDiv);
     });
+    toggleSpinner(false);
 }
 document.getElementById('search-btn').addEventListener('click', ()=>{
     const searchItem = document.getElementById('search-bar').value;
+    toggleSpinner(true);
     loadPhones(searchItem);
 })
-loadPhones();
+
+const toggleSpinner = isLoading =>{
+    const spinner = document.getElementById('spinner');
+    if(isLoading){
+        spinner.classList.remove('hidden');
+    }
+    else{
+        spinner.classList.add('hidden');
+    }
+
+}

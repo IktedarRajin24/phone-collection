@@ -15,21 +15,24 @@
     </header>
     <main class="bg-slate-300 min-h-full">
         
-        <div class="p-3 flex items-center justify-end gap-2">
+        <div class="p-3 flex items-center justify-end gap-2 lg:w-1/2 ms-auto">
             <input type="text" id="search-bar" class="w-3/12 h-5/6 p-2 rounded-lg" placeholder="Search your phone">
-            <button id="search-btn" class="bg-blue-400 p-2 w-28 text-white rounded-lg hover:bg-blue-700">Search</button>
+            <button id="search-btn" class="bg-blue-400 p-2 lg:w-1/6 text-white rounded-lg hover:bg-blue-700">Search</button>
         </div>
-        <div class="m-2 animate-spin">
-            <img class="w-1/12 mx-auto" src="./images/loading.png" alt="">
+        <div id="spinner" class="m-2 animate-spin hidden">
+            <img class="w-12 mx-auto" src="./images/loading.png" alt="">
         </div>
         <div id="phone-container" class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 grid-flow-row gap-4 p-3 mt-0">
             
             
         </div>
         <div class="p-4 text-center ">
-            <p id="err-msg" class="text-red-500 text-xl font-semibold hidden">
+            <p id="err-msg" class="text-red-500 lg:text-xl sm:text-md font-semibold hidden">
                 Nothing to show
             </p>
+        </div>
+        <div id="show-all-btn" class="flex justify-center mx-auto py-4 sm:w-1/2 lg:w-1/6 hidden">
+            <button class="bg-blue-400 p-2 sm:w-1/2 text-white rounded-lg hover:bg-blue-700">Show All</button>
         </div>
     </main>
     <footer></footer>
